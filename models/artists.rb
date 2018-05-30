@@ -3,7 +3,8 @@ require_relative('../db/sql_runner')
 
 class Artist
 
-  attr_reader :name, :id
+  attr_accessor :name
+  attr_reader :id
 
   def initialize(options)
     @id = options['id'].to_i
@@ -28,6 +29,17 @@ class Artist
     sql = "SELECT * FROM artists"
     artists = SqlRunner.run(sql)
     return artists.map {|artist| Artist.new(artist)}
+  end
+
+  def self.delete_all()
+    sql = "DELETE FROM artists"
+    SqlRunner.run(sql)
+  end
+
+  def update()
+    sql = "UPDATE artists SET name = ($1) WHERE id = $2"
+    values = [@name, @id]
+    SqlRunner.run(sql, values)
   end
 
 end
