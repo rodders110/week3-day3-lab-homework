@@ -28,6 +28,8 @@ class Album
   def self.delete_all()
     sql = "DELETE FROM albums"
     SqlRunner.run(sql)
+    sql = "ALTER SEQUENCE albums_id_seq RESTART WITH 1"
+    SqlRunner.run(sql)
   end
 
   def self.find_by_ID(id)

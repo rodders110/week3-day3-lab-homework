@@ -34,6 +34,8 @@ class Artist
   def self.delete_all()
     sql = "DELETE FROM artists"
     SqlRunner.run(sql)
+    sql = "ALTER SEQUENCE artists_id_seq RESTART WITH 1"
+    SqlRunner.run(sql)
   end
 
   def self.find_by_ID(id)
