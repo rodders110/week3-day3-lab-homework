@@ -22,14 +22,17 @@ artist_list = Artist.all()
 album_list = Album.all()
 artist_query = album1.artist()
 
-artist1.name = 'Shirley Bassey'
-artist1.update()
+# artist1.name = 'Shirley Bassey'
+# artist1.update()
+#
+# album1.title = 'I am what I am'
+# album1.genre  = 'Classical'
+# album1.update()
+# album1.delete()
+# artist1.delete()
 
-album1.title = 'I am what I am'
-album1.genre  = 'Classical'
-album1.update()
-album1.delete()
-artist1.delete()
+album_by_ID = Album.find_by_ID("1")
+artist_by_ID = Artist.find_by_ID("1")
 
 
 
